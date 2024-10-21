@@ -1,4 +1,35 @@
-<!DOCTYPE html>
+<?php
+include("conexao.php");
+
+if(isset($_POST['email']) || isset( $_POST['password'])) {
+    $email = $_POST['email'] ?? "";
+    $senha = $_POST['senha'] ?? "";
+    if(strlen($email) == 0) {
+        echo'Preencha seu email!';
+    }elseif(strlen($senha) == 0) {
+        echo 'Preencha sua senha!';;
+    }else{
+        $email = $mysqli->real_escape_string($_POST['email']); // retira os caracterers especiais
+        $senha = $mysqli->real_escape_string($_POST['senha']); // não é a forma mais segura de previnir SQLINJECTION
+
+        $stmt = $mysqli->prepare("SELECT * FROM usuarios WHERE email = ? AND senha = ?");
+        $stmt->bind_param("ss", $email, $senha); // ss é os tipios das variaveis string string
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if($result->num_rows > 0){
+            $usuario = $result->fetch_assoc();
+            echo"Nome: {$usuario['nome']}";
+        }else{
+            echo "Falha ao logar, email ou senha incorretos!";
+        }
+
+    };
+}
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,10 +45,10 @@
     </p>
     <p>
         <label for="senha">Senha</label>
-        <input type="password" name="semha">
+        <input type="password" name="senha">
     </p>
     <p>
-        <button type="ssubmit">Emtrar</button>
+        <button type="submit">Entrar</button>
     </p>
     </form>
 </body>
