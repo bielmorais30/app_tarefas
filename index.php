@@ -20,7 +20,16 @@ if(isset($_POST['email']) || isset( $_POST['password'])) {
 
         if($result->num_rows > 0){
             $usuario = $result->fetch_assoc();
-            echo"Nome: {$usuario['nome']}";
+            
+           if(!isset($_SESSION)){
+            session_start();
+           }
+
+           $_SESSION['id'] = $usuario['id'];
+           $_SESSION['nome'] = $usuario['nome'];
+           
+           header("Location: painel.php");
+
         }else{
             echo "Falha ao logar, email ou senha incorretos!";
         }
