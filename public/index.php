@@ -1,15 +1,29 @@
-<?php
-// index.php
-require_once '../src/controllers/HomeController.php';
+<!DOCTYPE html>
+<html lang="en">
 
-if(!isset($_SESSION)){
-    session_start();
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo isset($page) ? $page: "Home";?></title>
+</head>
 
-$page = isset($_GET['page']) ? $_GET['page'] : 'home'; // Página padrão
+<body>
+    <?php
+    // index.php
+    require_once '../src/controllers/HomeController.php';
 
-$controler = new HomeController();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
-$controler->render($page);
+    $page = isset($_GET['page']) ? $_GET['page'] : 'home'; // Página padrão
 
-exit;
+    $controler = new HomeController();
+
+    $controler->render($page);
+
+    exit;
+    ?>
+</body>
+
+</html>
