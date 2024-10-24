@@ -1,5 +1,5 @@
 <?php
-include("conexao.php");
+require_once __DIR__ . '/../src/config/conexao.php';
 
 if(isset($_POST['email']) || isset( $_POST['password'])) {
     $email = $_POST['email'] ?? "";
