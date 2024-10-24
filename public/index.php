@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($page) ? $page: "Home";?></title>
-</head>
-
-<body>
-    <?php
+<?php
     // index.php
     require_once '../src/controllers/HomeController.php';
 
@@ -19,9 +9,19 @@
     $page = isset($_GET['page']) ? $_GET['page'] : 'home'; // Página padrão
 
     $controler = new HomeController();
+ ?>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= ucfirst($page); // ucFirst deixa a primeira em maiusculo?></title> 
+</head>
+
+<body>
+    <?php
     $controler->render($page);
-
     exit;
     ?>
 </body>
