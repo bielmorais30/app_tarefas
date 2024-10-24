@@ -1,5 +1,5 @@
 <?php
-include("protect.php");
+include(__DIR__."\../helpers/protect.php");
     // if(!isset($_SESSION)){
     //     session_start();
     // }
