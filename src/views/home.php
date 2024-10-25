@@ -10,7 +10,7 @@ if(isset($_POST['email']) || isset( $_POST['password'])) {
     if(strlen($email) == 0) {
         echo'Preencha seu email!';
     }elseif(strlen($senha) == 0) {
-        echo 'Preencha sua senha!';;
+        echo 'Preencha sua senha!';
     }else{
         $email = $mysqli->real_escape_string($_POST['email']); // retira os caracterers especiais
         $senha = $mysqli->real_escape_string($_POST['senha']); // não é a forma mais segura de previnir SQLINJECTION
