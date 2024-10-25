@@ -46,8 +46,12 @@ if (isset($_POST['email']) || isset($_POST['password'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
+
+
         body{
-            background-image: linear-gradient(45deg, orange, blue);
+            background-image: linear-gradient(45deg, var(--cor-primaria), var(--cor-secundaria));
+            /* background-image: linear-gradient(45deg, #0b8770, #ebe68d); */
+            /* background-image: linear-gradient(45deg, #0b8770, blue); */
         }
     </style>
 </head>
