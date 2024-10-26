@@ -11,6 +11,9 @@ include(__DIR__."\../helpers/protect.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel</title>
+    <style>
+        
+    </style>
 </head>
 <body>
 
@@ -28,11 +31,14 @@ include(__DIR__."\../helpers/protect.php");
             <ul class="navbar-nav me-2 mb-2 mb-lg-0">
             <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Perfil" class="rounded-circle mr-2" style="width: 40px">
                 <li class="nav-item">
-                    <a class="nav-link active ms-2" data-bs-toggle="dropdown" aria-current="page" href="#" >Username </a>
+                    <a class="nav-link active ms-2" data-bs-toggle="dropdown" aria-current="page" href="#" ><?php echo ucfirst($_SESSION['nome']);?></a>
 
                 </li>
                 <li class="nav-item me-2">
-                    <a class="nav-link active ms-2" aria-current="page" href="#" style="color: red">Sair</a>
+                    <div class="sair_div">
+                    <a class="nav-link active ms-2 link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" aria-current="page" href="logout.php"  id="sair" >Sair</a>
+                    </div>
+                    
 
                 </li>
                             
